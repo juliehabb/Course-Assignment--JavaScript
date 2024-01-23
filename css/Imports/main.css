@@ -1,0 +1,282 @@
+@import url(footer.css);
+@import url(nav.css);
+
+/* General
+----------------------------------------------*/
+
+
+main {
+    margin: 2rem;
+  }
+
+body {
+    background-color: #1D1D1D;
+    color: white;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 100%;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+h2, h3 {
+    margin: 0;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+
+.link {
+    text-decoration: none;
+    color: white;  
+}
+
+.header {
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*Cards
+------------------------------------*/
+
+.card {
+    background-color: #393939;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    margin-right: 0.5rem;  
+}
+
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax (400, 1fr));
+    gap: 2rem;
+    display: flex; 
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+  }
+
+  .games-card {
+    background: #393939;
+    border-radius: 15px;
+    transition: 0.3s;
+    width: 250px;
+    overflow: hidden;
+  }
+  
+  .games-image {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .games-image img {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+  }
+  
+  .games-content {
+    padding: 10px
+  }
+  
+  .games-content .card-category {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    color: rgb(46, 46, 46);
+    display: block;
+    text-decoration: none;
+  }
+  
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card-sale {
+    background-color: #F4A50D;
+    color: #1D1D1D;
+    border-radius: 5px;
+    padding: 0.2rem;
+  }
+  
+  .games-content .card-title {
+    margin: 1rem 0;
+    color: rgb(255, 255, 255);
+  }
+  
+  .games-content .card-tags {
+    font-size: 1rem;
+    line-height: 1.5rem ;
+    margin: 0;
+  }
+
+  .card-tag {
+    color: rgb(183, 183, 183);
+    border-radius: 10px;
+    padding:0.5rem;
+    margin-right: 1rem;
+  }
+  
+  .price-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-price {
+    font-size: 32px;
+    font-weight: 600;
+    padding-right: 1rem;
+  
+  }
+  
+  .card-old-price {
+    text-decoration: line-through;
+    padding-right: 1rem;
+  }
+
+
+
+  @media (max-width: 1250px) {
+
+    .games-container {
+      display: flex;
+      flex-direction: row; 
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+
+    .games-container::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .games-card {
+      overflow: visible;
+    }
+
+  }
+
+/*Buttons
+------------------------------------*/
+.primary-button {
+    padding: 1rem 2rem;
+    background-color: #0DF4DF;
+    cursor: pointer;
+    text-decoration: none;
+    color: #1D1D1D;
+}
+  
+.secondary-button {
+    padding: 1rem 2rem;
+    background-color: #393939;
+    border: 2px solid;
+    border-color: #0DF4DF;
+    color: #0DF4DF;
+    cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+/*Form
+------------------------------------*/
+
+label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .form-picture {
+    padding-left: 5rem;
+  }
+  
+  .search-box input{
+    width: 50%;
+    height: 3rem;
+    border: none;
+    outline: none;
+    background: #393939;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding-left: 1rem;
+  }
+  
+/*Icons
+------------------------------------*/
+.fa-brands {
+    color: white;
+}
+
+/*Accordion
+------------------------------------*/
+.accordian-container{
+    margin-bottom: 1rem;
+}
+.accordian{
+    background-color: #393939;
+    padding: 1rem 13rem;
+}
+
+/*Checkout
+------------------------------------*/
+
+.checkout-info{
+  text-align: center;
+}
+
+.checkout-stage {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+}

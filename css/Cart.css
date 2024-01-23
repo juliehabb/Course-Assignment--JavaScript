@@ -1,0 +1,75 @@
+@import url(Imports/main.css);
+
+
+.game-shoppingcart {
+  background-color: #393939;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 5rem;
+  flex-direction: row;
+}
+
+.game-shoppingcart img {
+  width: 20%;
+}
+
+.price-container {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.removeitems {
+  text-align: right;
+  margin: 5rem;
+}
+
+.checkout-container {
+  text-align: right;
+  margin: 5rem;
+}
+
+
+
+@media (max-width: 1200px) {
+  
+    h1 {
+      display: flex;
+      justify-content: center;
+    }
+
+    .removeitems {
+      display: flex;
+      justify-content: center;
+    }
+
+    .subtotal {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .buttons {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .checkout-containter {
+      display: flex;
+      align-content: center;
+      
+    }
+    
+    .game-shoppingcart {
+      background-color: #393939;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      margin: 5rem;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  

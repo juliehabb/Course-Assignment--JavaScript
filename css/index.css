@@ -1,0 +1,15 @@
+@import url(Imports/main.css);
+
+
+.first-headline {
+  margin-left: 2rem;
+}
+
+.subnautica {
+    width: cov;
+}
+
+.sale-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}

@@ -1,0 +1,19 @@
+@import url(Imports/main.css);
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh;
+}
+
+.overview-container {
+  background-color: #393939;
+  padding: 10rem;
+  border-radius: 0.3rem;
+}
+
+.buttons {
+  justify-content: center;
+}

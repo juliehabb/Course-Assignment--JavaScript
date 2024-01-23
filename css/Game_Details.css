@@ -1,0 +1,30 @@
+@import url(Imports/main.css);
+
+.gamedetails {
+    display: flex;
+    margin-bottom: 3rem;
+    padding: 2rem;
+}
+
+.rightside {
+    padding: 2rem;
+}
+
+.accordian {
+    padding: 1rem;
+}
+
+.buttons {
+    justify-content: flex-start;
+}
+
+@media (max-width: 1400px) {
+
+    .gamedetails {
+      display: flex;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      flex-direction: column;
+  }
+  
+  }

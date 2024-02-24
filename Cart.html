@@ -9,6 +9,9 @@
         <title>Cart</title>
         <link rel="stylesheet" href="css/Cart.css">
         <script src="https://kit.fontawesome.com/ab8b6737a1.js" crossorigin="anonymous"></script>
+        <!--Javascript-->
+        <script defer type="module" src="js/checkout.mjs"></script>
+
     
     </head>
     
@@ -40,7 +43,7 @@
                                     <i class="fa-solid fa-heart"></i>
                                     Wishlist
                                 </a>
-                                <a href="Cart.html">
+                                <a class="cart-items-display" href="Cart.html">
                                     <i class="fa-solid fa-cart-shopping"></i>
                                     Cart (1)
                                 </a>
@@ -55,37 +58,8 @@
         </header>
         
         <main>
-            <h1>Shopping Cart (1)</h1>
-            <div class="container">
-                <div class="game-shoppingcart">
-                    <div class="image-container">
-                        <img src="Images/Hogwarts_Legacy.jpg" alt="Cover photo of Hogwarts Legacy">
-                    </div>
-                    <div class="info-container">
-                        <h4>Hogwarts Legacy</h4>
-                        <p>City building, base building, colony sim, medieval</p>
-                    </div>
-                    <div class="price-container">
-                        <p class="price-game">$49</p>
-                        <i class="fa-solid fa-x"></i>
-                    </div>
-                </div>
-                <p class="removeitems">Remove all items</p>
-        
-                <div class="checkout-container">
-                    <div class="subtotal">
-                        <p>Subtotal</p>
-                        <p class="price-game">$49</p>
-                    </div>
-                    <div class="buttons">
-                        <a href="Checkout.html">
-                            <p class="secondary-button">Continue shopping</p>
-                        </a>
-                        <a href="Checkout.html">
-                            <p class="primary-button">Check out $49</p>
-                        </a>
-                    </div>
-                </div>
+            <h1>Shopping Cart</h1>
+            <div class="container" id="container">
             </div>
         </main>
     

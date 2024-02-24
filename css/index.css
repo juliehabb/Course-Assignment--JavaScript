@@ -13,3 +13,47 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
+.container-games {
+  display: flex;
+}
+
+.checkboxes {
+  padding-right: 5rem;
+}
+
+.checkboxes-system {
+  margin-bottom: 2rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+
+}
+
+.checkbox-label {
+  padding-left: 0.5rem;
+}
+
+h4 {
+  margin-bottom: 0.5rem;
+}
+
+.filter-btn {
+  background-color: aqua;
+}
+
+
+.filter-btn:hover {
+  background-color: rgb(218, 239, 239);
+}
+
+.filter-btn:active {
+  background-color: rgb(218, 239, 239);
+}
+
+.game-buy-button {
+  text-transform: uppercase;;
+}
+

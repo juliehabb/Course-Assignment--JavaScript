@@ -1,0 +1,15 @@
+
+Index:
+1  Liste av produkter på hjemmesiden 
+2. Filtrer produkter med kategori, kjønn eller sjanger ✨
+3. Produktside med mer detaljer
+
+Handlekurv:
+4. Legge til produkt i handlekurv ✨
+5. Fjerne produkt fra handlekurv ✨
+
+Checkout:
+6. Se sammendrag av handlekurv i checkout ✨
+7. Order confirmation etter checkout
+8. Loading indicator ✨
+9. Errors handled for user (errror messages)  ✨

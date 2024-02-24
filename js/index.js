@@ -6,8 +6,8 @@
 
 
 import { fetchApi } from "../js/fetch.js";
-import { addToCart } from "./cart.mjs";
 import { API_GAMES_URL } from "./constants.mjs";
+import { addToCart } from "./cart.mjs";
 
 function createCart() {
     const cart = localStorage.getItem ("cart");
@@ -15,8 +15,6 @@ function createCart() {
         localStorage.setItem("cart", JSON.stringify([]));
     }
 }
-
-
 
 
 const actionGenreButton = document.getElementById("genre-action");
@@ -58,9 +56,20 @@ clearGenreButton.addEventListener("click",() => {
 
 //Returns game HTML:
 
-
+//container-games > games > gamesSaleSection > gamesContainer
 
 function generateGameHtml(game) {
+
+    const containerGames= document.createElement("div");
+    containerGames.classList.add("container-games");
+
+    const games = document.createElement("div");
+    games.classList.add("games");
+
+    const gamesSaleSection = document.createElement("div");
+    gamesSaleSection.classList.add("games-sale-section");
+
+
     const gamesContainer = document.createElement("div");
     gamesContainer.classList.add("games-container");
 
@@ -101,9 +110,11 @@ function generateGameHtml(game) {
 
     const cardOldPrice = document.createElement("p");
     cardOldPrice.textContent = game.price;
+    cardOldPrice.classList.add("card-old-price");
 
     const cardDiscountedPrice = document.createElement("p");
     cardDiscountedPrice.textContent = game.discountedPrice;
+    cardDiscountedPrice.classList.add("card-price");
 
     const gameBuyButton = document.createElement("button");
     gameBuyButton.textContent = "Buy";
@@ -112,23 +123,22 @@ function generateGameHtml(game) {
         addToCart(game);
     });
 
+    //container-games > games > gamesSaleSection > gamesContainer
+
 
     //add elements to page:
+    containerGames.append(games);
+    games.append(gamesSaleSection);
+    gamesSaleSection.append(gamesContainer);
     gamesContainer.appendChild(gamesCard);
-    gamesContainer.appendChild(imageContainer);
-    imageContainer.appendChild(gamesImage);
+    gamesCard.append(imageContainer, gamesContent);
+    imageContainer.append(gamesImage);
     gamesImage.appendChild(image);
-    gamesCard.appendChild(gamesDetails);
-    gamesDetails.appendChild(gamesContent);
-    gamesContent.appendChild(heading);
-    gamesContent.appendChild(tagsContainer);
-    tagsContainer.appendChild(cardGenre);
-    gamesContent.appendChild(priceContainer);
-    priceContainer.appendChild(cardOldPrice);
-    priceContainer.appendChild(cardDiscountedPrice);
-    gamesContent.appendChild(gameBuyButton);
+    gamesContent.append(heading, tagsContainer, cardGenre, priceContainer, gameBuyButton);
+    priceContainer.append(cardOldPrice, cardDiscountedPrice);
 
-    return gamesContainer;
+
+    return containerGames;
 }
     
 function displayGames(games) {
@@ -157,8 +167,10 @@ async function renderHomePage() {
     }
 }
 
+
 async function main() {
     await renderHomePage();
+
 }
 
 main();

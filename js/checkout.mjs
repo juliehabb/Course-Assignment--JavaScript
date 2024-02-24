@@ -1,3 +1,7 @@
+import { addToCart } from "./cart.mjs";
+import { formatCurrency } from "./formatNumbers.mjs";
+import { removeFromCart } from "./cart.mjs";
+import { clearCart } from "./cart.mjs";
 
 function generateHtmlForItem(game) {
     const container = document.createElement("div");
@@ -33,10 +37,38 @@ function generateHtmlForItem(game) {
     gamePrice.classList.add("price-game");
     gamePrice.textContent = "Price: " + game.price;
 
+    const quantityAdjustmentContainer = document.createElement("div");
+
+    const increaseButton = document.createElement("button");
+    increaseButton.textContent = "+";
+    increaseButton.addEventListener("click", () => {
+        console.log("increase the the total")
+        addToCart(game);
+        displayCartItems();
+
+    });
+
+
+    const decreaseButton = document.createElement("button");
+    decreaseButton.textContent = "-";
+    decreaseButton.addEventListener("click", () => {
+        console.log("decrease the the total")
+        removeFromCart(game);
+        displayCartItems();
+    });
+
+
+
+    
+
     //Outside card:
 
-    const removeItems = document.createElement("div");
+    const removeItems = document.createElement("button");
     removeItems.textContent = "Remove all Items";
+    removeItems.addEventListener("click", () => {
+        clearCart();
+        displayCartItems();
+    });
 
     const checkoutContainer = document.createElement("div");
     checkoutContainer.classList.add("checkout-container");
@@ -46,7 +78,7 @@ function generateHtmlForItem(game) {
 
     const gamePriceTotal = document.createElement("div");
     gamePriceTotal.classList.add("price-game");
-    gamePriceTotal.textContent = "Total: " + game.price * game.quantity;
+    gamePriceTotal.textContent = "Total: " + formatCurrency(game.price * game.quantity);
 
     const buttons = document.createElement("div");
     buttons.classList.add("buttons");
@@ -72,14 +104,11 @@ function generateHtmlForItem(game) {
     gameShoppingCart.append(imageContainer, infoContainer, priceContainer);
     imageContainer.append(image);
     infoContainer.append(gameTitle, gameGenre);
-    priceContainer.append(gamePrice, gameQuantity);
+    priceContainer.append(gamePrice, gameQuantity, quantityAdjustmentContainer);
     container.appendChild(checkoutContainer);
     checkoutContainer.append(removeItems, subtotal, gamePriceTotal, buttons);
-    buttons.append(checkoutButtonBox, secondaryButton, primaryButton )
-
-
-
-
+    buttons.append(checkoutButtonBox, secondaryButton, primaryButton, )
+    quantityAdjustmentContainer.append(increaseButton, decreaseButton);
 
     return container;
 
@@ -89,6 +118,7 @@ console.log("hello");
 
 function displayCartItems() {
     const displayContainer = document.getElementById("container");
+    displayContainer.textContent = "";
     const cart = JSON.parse(localStorage.getItem("cart"));
 
     cart.forEach(function (currentGame) {

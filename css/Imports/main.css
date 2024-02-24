@@ -69,7 +69,7 @@ a {
 
 .games-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax (400, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax (400, 2fr));
     gap: 2rem;
     display: flex; 
     flex-wrap: wrap;
@@ -146,16 +146,16 @@ a {
   }
   
   .card-price {
-    font-size: 32px;
-    font-weight: 600;
-    padding-right: 1rem;
-  
-  }
-  
-  .card-old-price {
     text-decoration: line-through;
     padding-right: 1rem;
   }
+  
+  .card-old-price {
+    font-size: 32px;
+    font-weight: 600;
+    padding-right: 1rem;
+  }
+
 
 
 

@@ -9,14 +9,21 @@
     width: cov;
 }
 
-.sale-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
 .container-games {
   display: flex;
+  flex-direction: column;
 }
+
+.games {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
 
 .checkboxes {
   padding-right: 5rem;
@@ -41,7 +48,7 @@ h4 {
 }
 
 .filter-btn {
-  background-color: aqua;
+  background-color: rgb(93, 93, 93);
 }
 
 
@@ -55,5 +62,9 @@ h4 {
 
 .game-buy-button {
   text-transform: uppercase;;
+}
+
+.container-games  {
+  display: flex;
 }
 

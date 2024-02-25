@@ -124,21 +124,12 @@ function displayCartItems() {
     });
 }
 
-function displayCartFinal() {
-    const displayContainer = document.getElementById("cart-final");
-    displayContainer.textContent = "";
-
-    cart.forEach(function (currentGame) {
-        const gameHtml = generateHtmlForItem(currentGame);
-        displayContainer.appendChild(gameHtml);
-    });
-}
 
 
 
 function main() {
-    displayCartItems();
-    displayCartFinal();
+    displayCartItems()
 }
 
 main();
+

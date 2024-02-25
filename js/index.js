@@ -4,11 +4,13 @@
 // 3. Make it fast
 
 
-
 import { fetchApi } from "../js/fetch.js";
 import { API_GAMES_URL } from "./constants.mjs";
 import { addToCart } from "./cart.mjs";
 import { addToProductDetails } from "./productDetails.mjs";
+import { loadingScreen } from "./loader.mjs";
+
+loadingScreen();
 
 function createCart() {
     const cart = localStorage.getItem ("cart");
@@ -188,5 +190,3 @@ async function main() {
 }
 
 main();
-
-

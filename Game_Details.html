@@ -9,6 +9,8 @@
         <title>Hogwarts Legacy</title>
         <link rel="stylesheet" href="css/Game_Details.css">
         <script src="https://kit.fontawesome.com/ab8b6737a1.js" crossorigin="anonymous"></script>
+                <!--Javascript-->
+        <script defer type="module" src="js/game_details.mjs"></script>
     
     </head>
     
@@ -54,26 +56,8 @@
             </section>
         </header>
         <main>
-            <div class="gamedetails">
-                <div class="leftside">
-                    <img src="Images/Hogwarts_Play.png" alt="Cover photo of Hogwarts Legacy">
-                </div>
-                <div class="rightside">
-                    <i class="fa-regular fa-heart"></i>
-                    <h3>Hogwarts Legacy</h3>
-                    <p>Hogwarts Legacy is an immersive, open-world action RPG set in the world first introduced in 
-                        the Harry Potter books.For the first time, experience Hogwarts in the 1800s. </p>
-                    <h3>$16</h3>
-                    <div class="buttons">
-                        <a href="Cart.html">
-                            <p class="primary-button"><i class="fa-solid fa-cart-shopping"></i></p>
-                        </a>
-                        <a href="Cart.html">
-                            <p class="primary-button">Buy now</p>
-                        </a>
-                    </div>
+            <div class="gamedetails" id="gamedetails">
 
-                </div>
             </div>
     
             <div class="accordian-info">
@@ -91,126 +75,6 @@
                   </details>
             </div>
             
-            <div class="games-sale-section">
-                <div class="headline">
-                    <h2> Sale</h2>
-                    <a class="link" href="">See all</a>
-                </div>
-                <div class="games-container">
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/Farming-Simulator-2.png" alt="Cover photo of Farming Simulator">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">Farming Simulator</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $10</p>
-                                <p class="card-old-price"> $20</p>
-                                <p class="card-sale"> 50%</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/Stray.jpg" alt="Cover photo of Stray">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">Stray</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $15</p>
-                                <p class="card-old-price"> $30</p>
-                                <p class="card-sale"> 50%</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/Resident-Evil-2.png" alt="Cover photo of Resident Evil 4">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">Resident Evil 4</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $10</p>
-                                <p class="card-old-price"> $20</p>
-                                <p class="card-sale"> 50%</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/Planet_Zoo.jpg" alt="Cover photo of Planet Zoo 2">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">Planet Zoo</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $15</p>
-                                <p class="card-old-price"> $20</p>
-                                <p class="card-sale"> 20%</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/It_Takes_Two-2.png" alt="Cover photo of It takes two 2">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">It takes Two</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $15</p>
-                                <p class="card-old-price"> $20</p>
-                                <p class="card-sale"> 20%</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/Sims4_Rebrand.png" alt="Cover photo of Sims 4">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">The sims 4</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $10</p>
-                                <p class="card-old-price"> $20</p>
-                                <p class="card-sale"> 50%</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="games-card">
-                        <figure class="games-image">
-                            <img src="Images/Borderlands_3_cover_art.jpg" alt="Cover photo of Borderlands 3">
-                        </figure>
-                        <div class="games-content">
-                            <h3 class="games-content">Borderlands 2</h3>
-                            <div class="tags-container">
-                                <p class="card-tag">RPG, Choices matter, Colony sim, Medieval, Mediaval</p>
-                            </div>
-                            <div class="price-container">
-                                <p class="card-price"> $15</p>
-                                <p class="card-old-price"> $20</p>
-                                <p class="card-sale"> 20%</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
         </main>
 
         <footer>

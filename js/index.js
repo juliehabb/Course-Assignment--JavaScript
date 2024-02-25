@@ -8,6 +8,7 @@
 import { fetchApi } from "../js/fetch.js";
 import { API_GAMES_URL } from "./constants.mjs";
 import { addToCart } from "./cart.mjs";
+import { addToProductDetails } from "./productDetails.mjs";
 
 function createCart() {
     const cart = localStorage.getItem ("cart");
@@ -15,6 +16,14 @@ function createCart() {
         localStorage.setItem("cart", JSON.stringify([]));
     }
 }
+
+function createProductDetails() {
+    const productDetails = localStorage.getItem ("product-details");
+    if (!productDetails) {
+        localStorage.setItem("product-details", JSON.stringify([]));
+    }
+}
+
 
 
 const actionGenreButton = document.getElementById("genre-action");
@@ -73,9 +82,14 @@ function generateGameHtml(game) {
     const gamesContainer = document.createElement("div");
     gamesContainer.classList.add("games-container");
 
+
     //Image:
     const imageContainer = document.createElement("a");
     imageContainer.classList.add("image-container");
+    imageContainer.href = `Game_Details.html?title=${encodeURIComponent(game.title)}`;
+    imageContainer.addEventListener("click", () => {
+        addToProductDetails(game);
+    });
 
     const gamesImage = document.createElement("figure");
     gamesImage.classList.add("games-image");
@@ -89,6 +103,7 @@ function generateGameHtml(game) {
 
     const gamesCard = document.createElement("article");
     gamesCard.classList.add("games-card");
+
 
     const gamesDetails = document.createElement("div");
     gamesDetails.classList.add("games-details");
@@ -123,7 +138,6 @@ function generateGameHtml(game) {
         addToCart(game);
     });
 
-    //container-games > games > gamesSaleSection > gamesContainer
 
 
     //add elements to page:
@@ -159,6 +173,7 @@ function displayGames(games) {
 async function renderHomePage() {
     try {
         createCart();
+        createProductDetails();
         const responseData = await fetchApi(API_GAMES_URL);
         const games = responseData.data;
         displayGames(games);
@@ -170,7 +185,6 @@ async function renderHomePage() {
 
 async function main() {
     await renderHomePage();
-
 }
 
 main();

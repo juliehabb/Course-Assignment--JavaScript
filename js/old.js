@@ -1,119 +1,136 @@
 
-const API_URL = "https://api.noroff.dev/api/v1/gamehub";
+Old checkout:
 
-async function main() {
-    const responseData = await fetchApi(API_GAMES_URL);
-    const games = responseData.data;
-    displayGames(games);
-}
+import { addToCart } from "./cart.mjs";
+import { formatCurrency } from "./formatNumbers.mjs";
+import { removeFromCart } from "./cart.mjs";
+import { clearCart } from "./cart.mjs";
 
+function generateHtmlForItem(game) {
+    const container = document.createElement("div");
+    container.classList.add("container");
 
-
-
-async function fetchApi(url) {
-    try {
-        console.log("am i running");
-        const response = await fetch(url);
-        const json = await response.json();
-        return json;
-    } catch (error) {
-        console.log("Error", error); 
-    }
-}
+    const gameShoppingCart = document.createElement("div");
+    gameShoppingCart.classList.add("game-shoppingcart");
 
 
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("image-container");
+
+
+    const image = document.createElement("img");
+    image.src = game.image.url;
+    image.alt = game.image.alt;
+
+
+    const infoContainer = document.createElement("div");
+    infoContainer.classList.add("info-container");
+
+    const gameTitle = document.createElement("h4");
+    gameTitle.textContent = game.title;
+
+    const gameGenre = document.createElement("p");
+    gameGenre.textContent = game.genre;
+
+    const priceContainer = document.createElement("div");
+    priceContainer.classList.add("price-container");
+
+    const gameQuantity = document.createElement("div");
+    gameQuantity.textContent = "Quantity: " + game.quantity;
+
+    const gamePrice = document.createElement("div");
+    gamePrice.classList.add("price-game");
+    gamePrice.textContent = "Price: " + game.price;
+
+    const quantityAdjustmentContainer = document.createElement("div");
+
+    const increaseButton = document.createElement("button");
+    increaseButton.textContent = "+";
+    increaseButton.addEventListener("click", () => {
+        addToCart(game);
+        displayCartItems();
+    });
+
+    const decreaseButton = document.createElement("button");
+    decreaseButton.textContent = "-";
+    decreaseButton.addEventListener("click", () => {
+        removeFromCart(game);
+        displayCartItems();
+    });
 
 
 
+    //Outside card:
 
 
 
-fetch("https://api.noroff.dev/api/v1/gamehub")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    const removeItems = document.createElement("button");
+    removeItems.textContent = "Remove all Items";
+    removeItems.addEventListener("click", () => {
+        clearCart();
+        displayCartItems();
+    });
 
+    const checkoutContainer = document.createElement("div");
+    checkoutContainer.classList.add("checkout-container");
 
-//Get the games container
-var cardContainer = document.getElementById("game-container");
+    const subtotal = document.createElement("div");
+    subtotal.classList.add("subtotal");
 
-var newGame = document.createElement("article");
-newGame.className = "card";
+    const gamePriceTotal = document.createElement("div");
+    gamePriceTotal.classList.add("price-game");
+    gamePriceTotal.textContent = "Total: " + formatCurrency(game.price * game.quantity);
 
-//Add image to card
-var cardImage = document.createElement("img");
-cardImage.src = "Sunkenland.jpg";
-newGame.appendChild(cardImage);
+    const buttons = document.createElement("div");
+    buttons.classList.add("buttons");
 
-//Add title to card
-var cardTitle = document.createElement("h2");
-cardTitle.textContent = "Card Title";
-newGame.appendChild(cardTitle);
-
-
-// Put card on the table (in the card container)
-cardContainer.appendChild(newGame);
-
-gamesContainer.append(gamesCard, gamesDetails, gamesContent, heading, tagsContainer, cardTag);
-
-
-
-
-//FILTER GAMES YOUTUBE VID
-
-//FILTER GAMES
-
-
-const filterList = document.querySelector(".filter");
-const filterButtons = filterList.querySelectorAll(".filter-btn");
-//"GamesContainer instead of "conferences":
-const gameContainer = document.querySelectorAll(".games-container");
-
-filterButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        const filter = e.target.getAttribute("data-filter");
-        console.log(filter);
-
-        // change the active button
-        updateActiveButton(e.target);
-        filterGames(filter);
-    })
-})
-
-function updateActiveButton(newButton)  {
-    const activeButton = filterList.querySelector('active');
-    if (activeButton) {
-        activeButton.classList.remove('.active');
-    }
-
-    // add the active class to our new button 
-    newButton.classList.add("active");
-}
-
-
-//Change modes of buttons:
-function filterGames(gamesFilter) {
-    //get each game category
-    gameContainer.forEach((gam) => {
-        //get genre from games:
-        const gamGenre = gam.getAttribute("data-genre");
-        console.log(gamGenre)
-
-        //Check if category matches the filter
-        if (gamesFilter === gamGenre) {
-            gam.removeAttribute("hidden");
-            //if it matches, show that conf
-        } else {
-            gam.setAttribute("hidden", "");
-        }
-});
-
+    const checkoutButtonBox = document.createElement("a");
+    checkoutButtonBox.classList.add("checkout-button-box");
     
-    // if not, hide the conf
+
+    const primaryButton = document.createElement("button");
+    primaryButton.classList.add("primary-button");
+    primaryButton.textContent = "Check out";
+    primaryButton.addEventListener("click", function() {
+        window.location.href = "Success.html";
+    })
+    
+
+    const secondaryButton = document.createElement("div");
+    secondaryButton.classList.add("secondary-button");
+    secondaryButton.textContent = "Continue shopping";
+    
+    //Append:
+
+    container.append(gameShoppingCart, checkoutContainer);
+    gameShoppingCart.append(imageContainer, infoContainer, priceContainer);
+    imageContainer.append(image);
+    infoContainer.append(gameTitle, gameGenre);
+    priceContainer.append(gamePrice, gameQuantity, quantityAdjustmentContainer);
+    //Outside card
+    checkoutContainer.append(removeItems, subtotal, gamePriceTotal, buttons);
+    buttons.append(checkoutButtonBox, secondaryButton, primaryButton, )
+    quantityAdjustmentContainer.append(increaseButton, decreaseButton);
+
+    return container;
+
 }
 
 
+function displayCartItems() {
+    const displayContainer = document.getElementById("container");
+    displayContainer.textContent = "";
+    const cart = JSON.parse(localStorage.getItem("cart"));
 
-updateActiveButton();
+    cart.forEach(function (currentGame) {
+        const gameHtml = generateHtmlForItem(currentGame);
+        displayContainer.appendChild(gameHtml);
+    });
+}
 
-//const cardGenre = document.createElement("p");
-//cardGenre.textContent = game.genre;
+function main() {
+    displayCartItems();
+
+}
+
+main();

@@ -3,8 +3,6 @@ export function getProductDetails() {
     return productDetails;
 }
 
-
-
 export function addToProductDetails(game) { 
     const productDetails = getProductDetails();
     const itemIndex = productDetails.findIndex(function(currentGame) {

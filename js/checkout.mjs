@@ -1,7 +1,5 @@
-import { addToCart } from "./cart.mjs";
+import { addToCart, removeFromCart, clearCart } from "./cart.mjs";
 import { formatCurrency } from "./formatNumbers.mjs";
-import { removeFromCart } from "./cart.mjs";
-import { clearCart } from "./cart.mjs";
 
 function generateHtmlForItem(game) {
     const container = document.createElement("div");
@@ -10,15 +8,12 @@ function generateHtmlForItem(game) {
     const gameShoppingCart = document.createElement("div");
     gameShoppingCart.classList.add("game-shoppingcart");
 
-
     const imageContainer = document.createElement("div");
     imageContainer.classList.add("image-container");
-
 
     const image = document.createElement("img");
     image.src = game.image.url;
     image.alt = game.image.alt;
-
 
     const infoContainer = document.createElement("div");
     infoContainer.classList.add("info-container");
@@ -55,11 +50,8 @@ function generateHtmlForItem(game) {
         displayCartItems();
     });
 
-
-
     //Outside card:
 
-    
     const removeItems = document.createElement("button");
     removeItems.textContent = "Remove all Items";
     removeItems.addEventListener("click", () => {
@@ -91,13 +83,11 @@ function generateHtmlForItem(game) {
         window.location.href = "Success.html";
     })
     
-
     const secondaryButton = document.createElement("div");
     secondaryButton.classList.add("secondary-button");
     secondaryButton.textContent = "Continue shopping";
     
     //Append:
-
     container.append(gameShoppingCart, checkoutContainer);
     gameShoppingCart.append(imageContainer, infoContainer, priceContainer);
     imageContainer.append(image);
@@ -109,9 +99,7 @@ function generateHtmlForItem(game) {
     quantityAdjustmentContainer.append(increaseButton, decreaseButton);
 
     return container;
-
 }
-
 
 function displayCartItems() {
     const displayContainer = document.getElementById("cart-items-display");
@@ -123,9 +111,6 @@ function displayCartItems() {
         displayContainer.appendChild(gameHtml);
     });
 }
-
-
-
 
 function main() {
     displayCartItems()

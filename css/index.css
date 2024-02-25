@@ -9,21 +9,10 @@
     width: cov;
 }
 
-.container-games {
-  display: flex;
-  flex-direction: column;
-}
-
 .games {
   display: flex;
   flex-direction: column;
 }
-
-
-
-
-
-
 
 .checkboxes {
   padding-right: 5rem;
@@ -47,24 +36,22 @@ h4 {
   margin-bottom: 0.5rem;
 }
 
+.filter {
+  padding-bottom: 3rem;
+}
+
 .filter-btn {
-  background-color: rgb(93, 93, 93);
+  background-color: rgb(27, 247, 255);
 }
 
 
 .filter-btn:hover {
-  background-color: rgb(218, 239, 239);
+  background-color: rgb(21, 224, 231);
 }
 
-.filter-btn:active {
-  background-color: rgb(218, 239, 239);
-}
 
 .game-buy-button {
   text-transform: uppercase;;
 }
 
-.container-games  {
-  display: flex;
-}
 

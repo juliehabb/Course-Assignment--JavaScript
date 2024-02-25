@@ -67,14 +67,14 @@ a {
     margin-right: 0.5rem;  
 }
 
-.games-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax (400, 2fr));
-    gap: 2rem;
-    display: flex; 
-    flex-wrap: wrap;
-    padding-bottom: 3rem;
-  }
+.games-sale-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax (400, 2fr));
+  gap: 2rem;
+  display: flex; 
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+}
 
   .games-card {
     background: #393939;
@@ -161,14 +161,13 @@ a {
 
   @media (max-width: 1250px) {
 
-    .games-container {
+    .games-sale-section{
       display: flex;
       flex-direction: row; 
       overflow-x: auto;
-      flex-wrap: nowrap;
     }
 
-    .games-container::-webkit-scrollbar {
+    .games-sale-section::-webkit-scrollbar {
       width: 0;
     }
 

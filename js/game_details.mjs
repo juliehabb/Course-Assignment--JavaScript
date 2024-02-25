@@ -1,7 +1,5 @@
-import { getProductDetails } from "./productDetails.mjs";
-import { addToProductDetails } from "./productDetails.mjs";
 import { addToCart } from "./cart.mjs";
-
+import { formatCurrency } from "./formatNumbers.mjs";
 
 
 function generateGameHtml(game) {
@@ -22,14 +20,14 @@ function generateGameHtml(game) {
     const heading = document.createElement("h3");
     heading.textContent = game.title;
 
-    const genre = document.createElement("p");
-    genre.textContent = game.genre;
+    const description = document.createElement("p");
+    description.textContent = game.description;
 
     const priceContainer = document.createElement("div");
     priceContainer.classList.add("price-container");
-
+   
     const cardOldPrice = document.createElement("p");
-    cardOldPrice.textContent = game.price;
+    cardOldPrice.textContent = formatCurrency(game.price);
     cardOldPrice.classList.add("card-old-price");
 
     const gameBuyButton = document.createElement("button");
@@ -38,20 +36,14 @@ function generateGameHtml(game) {
         addToCart(game);
     });
 
-
-
-    //add elements to page:
+    //Append:
     gameDetails.append(leftSide,rightSide);
     leftSide.append(image);
-    rightSide.append(heading, genre, priceContainer, cardOldPrice, gameBuyButton);
+    rightSide.append(heading, description, priceContainer, cardOldPrice, gameBuyButton);
 
     return gameDetails;
-
-
 }
 
-
-//Display games:
 function displayGameDetails() {
     const displayContainer = document.getElementById("gamedetails");
     const productDetails = JSON.parse(localStorage.getItem("product-details"));
@@ -78,3 +70,4 @@ function main() {
 }
 
 main();
+

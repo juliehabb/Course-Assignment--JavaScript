@@ -1,9 +1,3 @@
-
-// 1. Make it Worker
-// 2. Make it right
-// 3. Make it fast
-
-
 import { fetchApi } from "../js/fetch.js";
 import { API_GAMES_URL } from "./constants.mjs";
 import { addToCart } from "./cart.mjs";
@@ -11,6 +5,7 @@ import { addToProductDetails } from "./productDetails.mjs";
 import { loadingScreen } from "./loader.mjs";
 
 loadingScreen();
+
 
 function createCart() {
     const cart = localStorage.getItem ("cart");
@@ -26,8 +21,7 @@ function createProductDetails() {
     }
 }
 
-
-
+//Filter buttons:
 const actionGenreButton = document.getElementById("genre-action");
 const sportsGenreButton = document.getElementById("genre-sports");
 const adventureGenreButton = document.getElementById("genre-adventure");
@@ -62,30 +56,19 @@ clearGenreButton.addEventListener("click",() => {
     renderHomePage();
 } )
 
-
-
-
-//Returns game HTML:
-
-//container-games > games > gamesSaleSection > gamesContainer
-
+//Generate HTML elements:
 function generateGameHtml(game) {
 
-    const containerGames= document.createElement("div");
-    containerGames.classList.add("container-games");
-
-    const games = document.createElement("div");
-    games.classList.add("games");
-
+    //Containers:
     const gamesSaleSection = document.createElement("div");
     gamesSaleSection.classList.add("games-sale-section");
-
 
     const gamesContainer = document.createElement("div");
     gamesContainer.classList.add("games-container");
 
+    const gamesCard = document.createElement("article");
+    gamesCard.classList.add("games-card");
 
-    //Image:
     const imageContainer = document.createElement("a");
     imageContainer.classList.add("image-container");
     imageContainer.href = `Game_Details.html?title=${encodeURIComponent(game.title)}`;
@@ -96,19 +79,10 @@ function generateGameHtml(game) {
     const gamesImage = document.createElement("figure");
     gamesImage.classList.add("games-image");
 
+    //Content:
     const image = document.createElement("img");
     image.src = game.image.url;
     image.alt = game.image.alt;
-
-
-    //Text content:
-
-    const gamesCard = document.createElement("article");
-    gamesCard.classList.add("games-card");
-
-
-    const gamesDetails = document.createElement("div");
-    gamesDetails.classList.add("games-details");
 
     const gamesContent = document.createElement("div");
     gamesContent.classList.add("games-content");
@@ -121,6 +95,7 @@ function generateGameHtml(game) {
 
     const cardGenre = document.createElement("p");
     cardGenre.textContent = game.genre;
+    cardGenre.classList.add("card-tag");
 
     const priceContainer = document.createElement("div");
     priceContainer.classList.add("price-container");
@@ -140,11 +115,7 @@ function generateGameHtml(game) {
         addToCart(game);
     });
 
-
-
-    //add elements to page:
-    containerGames.append(games);
-    games.append(gamesSaleSection);
+    //Append:
     gamesSaleSection.append(gamesContainer);
     gamesContainer.appendChild(gamesCard);
     gamesCard.append(imageContainer, gamesContent);
@@ -153,14 +124,12 @@ function generateGameHtml(game) {
     gamesContent.append(heading, tagsContainer, cardGenre, priceContainer, gameBuyButton);
     priceContainer.append(cardOldPrice, cardDiscountedPrice);
 
-
-    return containerGames;
+    return gamesSaleSection;
 }
     
 function displayGames(games) {
-    const displayContainer = document.querySelector("#display-container");
+    const displayContainer = document.querySelector("#games-sale-section");
     displayContainer.textContent = "";
-    console.log(displayContainer);
     games
     .filter(game => {
         if (game.genre === chosenGenre || chosenGenre === "") {
@@ -180,10 +149,8 @@ async function renderHomePage() {
         const games = responseData.data;
         displayGames(games);
     } catch (error) {
-        console.log(error);
     }
 }
-
 
 async function main() {
     await renderHomePage();
